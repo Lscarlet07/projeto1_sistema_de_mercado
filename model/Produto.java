@@ -48,4 +48,10 @@ public class Produto {
     public void setValor_unitario(double valor_unitario) {
         this.valor_unitario = valor_unitario;
     }
+
+    @Override
+    public String toString() {
+        return "Item " + codigo_produto + "\nNome: " + nome_produto + "\nPreço: " + valor_unitario + "\nValidade "
+                + data_validade + "\n";
+    }
 }
