@@ -1,11 +1,11 @@
 package controller;
 
 import java.util.Scanner;
-
 import model.ProdutoBebida;
 import model.ProdutoMercearia;
 import repositorio.RepositorioBebida;
 import repositorio.RepositorioMercearia;
+import view.AdegaView;
 import view.AppView;
 import view.BebidaView;
 import view.MerceariaView;
@@ -15,6 +15,7 @@ public class AppController {
     private AppView appview;
     private MerceariaView merceariaview;
     private BebidaView bebidaview;
+    private AdegaView adegaview;
     private RepositorioMercearia repositoriomercearia;
     private RepositorioBebida repositoriobebida;
 
@@ -23,6 +24,7 @@ public class AppController {
         appview = new AppView();
         merceariaview = new MerceariaView();
         bebidaview = new BebidaView();
+        adegaview = new AdegaView();
         repositoriomercearia = new RepositorioMercearia();
         repositoriobebida = new RepositorioBebida();
     }
@@ -41,7 +43,9 @@ public class AppController {
                 ProdutoBebida pb = bebidaview.cadastro_bebida(leitor);
                 repositoriobebida.getLista_bebidas().add(pb);
                 break;
-            
+            case 3:
+                adegaview.cadastro_adega(leitor);
+
         }
     }
 }
