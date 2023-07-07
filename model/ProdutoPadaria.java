@@ -1,26 +1,36 @@
 package model;
 
 public class ProdutoPadaria extends Produto {
-    private double peso_kg;
+    private double valor_kg;
+    private int peso_kg;
     private String data_embalado;
     private String categoria;
     private int codigo_pesagem;
 
     public ProdutoPadaria(String nome_produto, long codigo_produto, String data_validade, double valor_unitario,
-            double peso_kg, String data_embalado, String categoria, int codigo_pesagem) {
+            int peso_kg, double valor_kg, String data_embalado, String categoria, int codigo_pesagem) {
         super(nome_produto, codigo_produto, data_validade, valor_unitario);
         this.peso_kg = peso_kg;
+        this.valor_kg = valor_kg;
         this.data_embalado = data_embalado;
         this.categoria = categoria;
         this.codigo_pesagem = codigo_pesagem;
     }
 
-    public double getPeso_kg() {
+    public int getPeso_kg() {
         return peso_kg;
     }
 
-    public void setPeso_kg(double peso_kg) {
+    public void setPeso_kg(int peso_kg) {
         this.peso_kg = peso_kg;
+    }
+
+    public double getValor_kg() {
+        return valor_kg;
+    }
+
+    public void setValor_kg(double valor_kg) {
+        this.valor_kg = valor_kg;
     }
 
     public String getData_embalado() {
@@ -45,5 +55,11 @@ public class ProdutoPadaria extends Produto {
 
     public void setCodigo_pesagem(int codigo_pesagem) {
         this.codigo_pesagem = codigo_pesagem;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Embalado em: " + data_embalado + "\nSetor: " + categoria + "\nPeso: " + peso_kg
+                + "\nValor por kg: " + valor_kg + "\nCódigo de pesagem: " + codigo_pesagem + "\n";
     }
 }

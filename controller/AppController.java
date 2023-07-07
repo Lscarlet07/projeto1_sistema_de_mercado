@@ -4,13 +4,16 @@ import java.util.Scanner;
 import model.ProdutoAdega;
 import model.ProdutoBebida;
 import model.ProdutoMercearia;
+import model.ProdutoPadaria;
 import repositorio.RepositorioAdega;
 import repositorio.RepositorioBebida;
 import repositorio.RepositorioMercearia;
+import repositorio.RepositorioPadaria;
 import view.AdegaView;
 import view.AppView;
 import view.BebidaView;
 import view.MerceariaView;
+import view.PadariaView;
 
 public class AppController {
     private final Scanner leitor;
@@ -18,9 +21,11 @@ public class AppController {
     private MerceariaView merceariaview;
     private BebidaView bebidaview;
     private AdegaView adegaview;
+    private PadariaView padariaview;
     private RepositorioMercearia repositoriomercearia;
     private RepositorioBebida repositoriobebida;
     private RepositorioAdega repositorioadega;
+    private RepositorioPadaria repositoriopadaria;
 
     public AppController() {
         leitor = new Scanner(System.in);
@@ -28,9 +33,11 @@ public class AppController {
         merceariaview = new MerceariaView();
         bebidaview = new BebidaView();
         adegaview = new AdegaView();
+        padariaview = new PadariaView();
         repositoriomercearia = new RepositorioMercearia();
         repositoriobebida = new RepositorioBebida();
         repositorioadega = new RepositorioAdega();
+        repositoriopadaria = new RepositorioPadaria();
     }
 
     public void inicializar() {
@@ -50,6 +57,13 @@ public class AppController {
             case 3:
                 ProdutoAdega pa = adegaview.cadastro_adega(leitor);
                 repositorioadega.getLista_adega().add(pa);
+                break;
+            case 4:
+                ProdutoPadaria pd = padariaview.cadastro_padaria(leitor);
+                repositoriopadaria.getLista_padaria().add(pd);
+                break;
+            default:
+                inicializar();
                 break;
         }
     }
