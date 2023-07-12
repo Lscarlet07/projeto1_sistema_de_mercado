@@ -1,6 +1,8 @@
 package controller;
 
 import java.util.Scanner;
+
+import model.Adm;
 import model.ProdutoAdega;
 import model.ProdutoBebida;
 import model.ProdutoMercearia;
@@ -10,6 +12,7 @@ import repositorio.RepositorioBebida;
 import repositorio.RepositorioMercearia;
 import repositorio.RepositorioPadaria;
 import view.AdegaView;
+import view.AdmView;
 import view.AppView;
 import view.BebidaView;
 import view.MerceariaView;
@@ -22,6 +25,7 @@ public class AppController {
     private BebidaView bebidaview;
     private AdegaView adegaview;
     private PadariaView padariaview;
+    private AdmView admview;
     private RepositorioMercearia repositoriomercearia;
     private RepositorioBebida repositoriobebida;
     private RepositorioAdega repositorioadega;
@@ -34,6 +38,7 @@ public class AppController {
         bebidaview = new BebidaView();
         adegaview = new AdegaView();
         padariaview = new PadariaView();
+        admview = new AdmView();
         repositoriomercearia = new RepositorioMercearia();
         repositoriobebida = new RepositorioBebida();
         repositorioadega = new RepositorioAdega();
@@ -42,6 +47,8 @@ public class AppController {
 
     public void inicializar() {
         int op;
+
+        Adm a1 = new Adm();
 
         op = appview.menu_inicial(leitor);
 
@@ -61,6 +68,13 @@ public class AppController {
             case 4:
                 ProdutoPadaria pd = padariaview.cadastro_padaria(leitor);
                 repositoriopadaria.getLista_padaria().add(pd);
+                break;
+            case 5:
+                if (admview.autenticar(a1, leitor)) {
+                    admview.menu_adm(leitor);
+                } else {
+                    inicializar();
+                }
                 break;
             default:
                 inicializar();
