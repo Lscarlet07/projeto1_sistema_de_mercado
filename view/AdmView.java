@@ -36,4 +36,20 @@ public class AdmView {
 
         return op;
     }
+
+    public void alterar_senha(Adm administrador, Scanner entrada) {
+        System.out.println("Digite a sua nova senha");
+        long key1 = entrada.nextLong();
+
+        System.out.println("Confirme sua nova senha");
+        long key2 = entrada.nextLong();
+
+        if (key1 == key2) {
+            administrador.setSenha(key1);
+            System.out.println("Senha alterada");
+        } else {
+            System.out.println("Senhas divergentes, tente novamente");
+            alterar_senha(administrador, entrada);
+        }
+    }
 }

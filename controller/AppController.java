@@ -71,7 +71,7 @@ public class AppController {
                 break;
             case 5:
                 if (admview.autenticar(a1, leitor)) {
-                    admview.menu_adm(leitor);
+                    open_adm();
                 } else {
                     inicializar();
                 }
@@ -88,15 +88,25 @@ public class AppController {
         switch (op) {
             case 1:
                 adegaview.listagem_adega(repositorioadega.getLista_adega());
+                open_adm();
                 break;
             case 2:
                 bebidaview.listagem_bebida(repositoriobebida.getLista_bebidas());
+                open_adm();
                 break;
             case 3:
                 merceariaview.listagem_mercearia(repositoriomercearia.getLista_mercearia());
+                open_adm();
                 break;
             case 4:
                 padariaview.listagem_padaria(repositoriopadaria.getLista_padaria());
+                open_adm();
+                break;
+            case 5:
+                Adm gestor1 = new Adm();
+                admview.alterar_senha(gestor1, leitor);
+                inicializar();
+                break;
         }
     }
 }
