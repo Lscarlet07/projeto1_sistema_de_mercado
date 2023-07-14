@@ -1,7 +1,7 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
-
 import model.ProdutoBebida;
 
 public class BebidaView {
@@ -29,8 +29,9 @@ public class BebidaView {
             System.out.println("Teor de álcool:");
             teor = entrada.nextDouble();
 
-            entrada.nextLine();
         }
+
+        entrada.nextLine();
 
         System.out.println("Tipo de bebida:");
         tipo_bebida = entrada.nextLine();
@@ -50,5 +51,29 @@ public class BebidaView {
         System.out.println("Cadastro concluído\n");
         System.out.println(dados_pb);
         return dados_pb;
+    }
+
+    public void listagem_bebida(List<ProdutoBebida> cadastros) {
+        String nome, data, tipo, ml;
+        double valor, teor;
+        long codigo;
+        boolean alcool;
+
+        System.out.println("Bebidas cadastradas:");
+
+        for (ProdutoBebida item : cadastros) {
+            nome = item.getNome_produto();
+            data = item.getData_validade();
+            tipo = item.getTipo_bebida();
+            ml = item.getMl_produto();
+            valor = item.getValor_unitario();
+            alcool = item.isAlcoolico();
+            teor = item.getTeor_alcool();
+            codigo = item.getCodigo_produto();
+
+            System.out.printf(
+                    "Item %d\nNome: %s\nTipo de bebida: %s\nVolume: %s\nRestrito: %s\nTeor de álcool: %.2f\nValidade: %s\nValor unitário: %.2f",
+                    codigo, nome, tipo, ml, alcool, teor, data, valor);
+        }
     }
 }

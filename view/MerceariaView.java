@@ -1,7 +1,7 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
-
 import model.ProdutoMercearia;
 
 public class MerceariaView {
@@ -37,5 +37,28 @@ public class MerceariaView {
                 s_alimento, corredor);
 
         return dados_pm;
+    }
+
+    public void listagem_mercearia(List<ProdutoMercearia> cadastros) {
+        String nome, data, gramagem, setor;
+        double valor;
+        long codigo;
+        int corredor;
+
+        System.out.println("Bebidas cadastradas:");
+
+        for (ProdutoMercearia item : cadastros) {
+            nome = item.getNome_produto();
+            data = item.getData_validade();
+            gramagem = item.getGramagem();
+            setor = item.getSetor_alimento();
+            corredor = item.getCorredor_exposto();
+            valor = item.getValor_unitario();
+            codigo = item.getCodigo_produto();
+
+            System.out.printf(
+                    "Item %d\nNome: %s\nPeso: %s\nSetor: %s\nCorredor: %d\nValidade: %s\nValor unitário: %.2f",
+                    codigo, nome, gramagem, setor, corredor, data, valor);
+        }
     }
 }

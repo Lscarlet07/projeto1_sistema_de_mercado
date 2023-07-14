@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 import model.ProdutoPadaria;
 
@@ -48,5 +49,30 @@ public class PadariaView {
         System.out.println(dados_pd);
 
         return dados_pd;
+    }
+
+    public void listagem_padaria(List<ProdutoPadaria> cadastros) {
+        String nome, data, data_embalado, categoria;
+        double valor, valor_kg;
+        long codigo;
+        int peso, codigo_pesagem;
+
+        System.out.println("Bebidas cadastradas:");
+
+        for (ProdutoPadaria item : cadastros) {
+            nome = item.getNome_produto();
+            categoria = item.getCategoria();
+            data = item.getData_validade();
+            data_embalado = item.getData_embalado();
+            peso = item.getPeso_gramas();
+            valor_kg = item.getValor_kg();
+            valor = item.getValor_unitario();
+            codigo_pesagem = item.getCodigo_pesagem();
+            codigo = item.getCodigo_produto();
+
+            System.out.printf(
+                    "Item %d\nNome: %s\nPeso em gramas: %s\nCategoria: %s\nEmbalado em: %s\nValidade: %s\nValor por kg: %.2f\nValor unitário: %.2f\nCódigo de pesagem: %d\n",
+                    codigo, nome, peso, categoria, data_embalado, data, valor_kg, valor, codigo_pesagem);
+        }
     }
 }

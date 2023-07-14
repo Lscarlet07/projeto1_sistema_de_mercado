@@ -81,4 +81,22 @@ public class AppController {
                 break;
         }
     }
+
+    public void open_adm() {
+        int op = admview.menu_adm(leitor);
+
+        switch (op) {
+            case 1:
+                adegaview.listagem_adega(repositorioadega.getLista_adega());
+                break;
+            case 2:
+                bebidaview.listagem_bebida(repositoriobebida.getLista_bebidas());
+                break;
+            case 3:
+                merceariaview.listagem_mercearia(repositoriomercearia.getLista_mercearia());
+                break;
+            case 4:
+                padariaview.listagem_padaria(repositoriopadaria.getLista_padaria());
+        }
+    }
 }

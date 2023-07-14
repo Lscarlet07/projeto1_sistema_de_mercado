@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Scanner;
 import model.ProdutoAdega;
 
@@ -46,5 +47,28 @@ public class AdegaView {
         System.out.println("Cadastro concluído\n");
         System.out.println(dados_pa);
         return dados_pa;
+    }
+
+    public void listagem_adega(List<ProdutoAdega> cadastros) {
+        String nome, data, tipo, origem, ml;
+        double valor, teor;
+        long codigo;
+        int safra;
+
+        for (ProdutoAdega item : cadastros) {
+            nome = item.getNome_produto();
+            data = item.getData_validade();
+            tipo = item.getTipo_bebida();
+            origem = item.getPais_origem();
+            ml = item.getMl_produto();
+            valor = item.getValor_unitario();
+            teor = item.getTeor_alcool();
+            codigo = item.getCodigo_produto();
+            safra = item.getAno_safra();
+
+            System.out.printf(
+                    "Item %d\nNome: %s\nTipo de bebida: %s\nOrigem: %s\nSafra: %d\nVolume: %s\nTeor de álcool: %.2f\nValidade: %s\nValor unitário: %.2f",
+                    codigo, nome, tipo, origem, safra, ml, teor, data, valor);
+        }
     }
 }
