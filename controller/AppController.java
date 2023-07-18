@@ -86,7 +86,23 @@ public class AppController {
 
         switch (op) {
             case 1:
-                adegaview.listagem_adega(repositorioadega.getLista_adega());
+                int selection = adegaview.adega_adm(leitor);
+
+                if (selection == 1) {
+                    adegaview.listagem_adega(repositorioadega.getLista_adega());
+                } else if (selection == 2) {
+                    ProdutoAdega pa = adegaview.cadastro_adega(leitor);
+                    repositorioadega.getLista_adega().add(pa);
+
+                    adegaview.listagem_adega(repositorioadega.getLista_adega());
+                } else if (selection == 3) {
+                    adegaview.listagem_adega(repositorioadega.getLista_adega());
+
+                    ProdutoAdega a_remove = adegaview.remover_cadastro_adega(leitor, repositorioadega.getLista_adega());
+                    repositorioadega.getLista_adega().remove(a_remove);
+
+                    adegaview.listagem_adega(repositorioadega.getLista_adega());
+                }
                 open_adm();
                 break;
             case 2:

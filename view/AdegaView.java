@@ -72,4 +72,33 @@ public class AdegaView {
             System.out.println("\n");
         }
     }
+
+    public int adega_adm(Scanner entrada) {
+        int op;
+
+        System.out.println("Setor da Adega, escolha a opção desejada");
+        System.out.println("1- Ver cadastros / 2 - Adicionar produto / 3 - Remover produto");
+        op = entrada.nextInt();
+
+        entrada.nextLine();
+
+        return op;
+    }
+
+    public ProdutoAdega remover_cadastro_adega(Scanner entrada, List<ProdutoAdega> cadastros) {
+        long codigo;
+        System.out.println("Insira o código do produto que gostaria de remover");
+        codigo = entrada.nextLong();
+
+        ProdutoAdega ps = new ProdutoAdega(null, codigo, null, codigo, null, null, 0, codigo, null);
+
+        for (ProdutoAdega item : cadastros) {
+            if (codigo == item.getCodigo_produto()) {
+                ps = item;
+                System.out.println("Produto removido\n");
+                break;
+            }
+        }
+        return ps;    
+    }
 }

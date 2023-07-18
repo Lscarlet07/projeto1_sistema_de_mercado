@@ -5,8 +5,8 @@ public class Adm {
     private long senha;
 
     public Adm() {
-        credencial = "ab2530";
-        senha = 457892;
+        credencial = "ab";
+        senha = 1;
     }
 
     public String getCredencial() {

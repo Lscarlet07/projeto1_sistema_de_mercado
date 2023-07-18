@@ -30,7 +30,7 @@ public class AdmView {
     public int menu_adm(Scanner entrada) {
         System.out.println("Selecione a opção desejada");
         System.out.print(
-                "1- Cadastros da Adega\n2- Cadastros de Bebidas\n3- Cadastros da Mercearia\n4- Cadastros da Padaria\n5- Alterar senha\n");
+                "1- Setor da Adega\n2- Cadastros de Bebidas\n3- Cadastros da Mercearia\n4- Cadastros da Padaria\n5- Alterar senha\n");
 
         int op = entrada.nextInt();
 
