@@ -2,6 +2,8 @@ package view;
 
 import java.util.List;
 import java.util.Scanner;
+
+import model.ProdutoAdega;
 import model.ProdutoBebida;
 
 public class BebidaView {
@@ -76,5 +78,34 @@ public class BebidaView {
                     codigo, nome, tipo, ml, alcool, teor, data, valor);
             System.out.println("\n");
         }
+    }
+
+    public int bebida_adm(Scanner entrada) {
+        int op;
+
+        System.out.println("Setor de Bebidas, escolha a opção desejada");
+        System.out.println("1- Ver cadastros / 2 - Adicionar produto / 3 - Remover produto");
+        op = entrada.nextInt();
+
+        entrada.nextLine();
+
+        return op;
+    }
+
+    public ProdutoBebida remover_cadastro_bebida(Scanner entrada, List<ProdutoBebida> cadastros) {
+        long codigo;
+        System.out.println("Insira o código do produto que gostaria de remover");
+        codigo = entrada.nextLong();
+
+        ProdutoBebida ps = new ProdutoBebida(null, 0, null, 0, null, null, false, 0);
+
+        for (ProdutoBebida item : cadastros) {
+            if (codigo == item.getCodigo_produto()) {
+                ps = item;
+                System.out.println("Produto removido\n");
+                break;
+            }
+        }
+        return ps;
     }
 }

@@ -86,16 +86,16 @@ public class AppController {
 
         switch (op) {
             case 1:
-                int selection = adegaview.adega_adm(leitor);
+                int selection_a = adegaview.adega_adm(leitor);
 
-                if (selection == 1) {
+                if (selection_a == 1) {
                     adegaview.listagem_adega(repositorioadega.getLista_adega());
-                } else if (selection == 2) {
+                } else if (selection_a == 2) {
                     ProdutoAdega pa = adegaview.cadastro_adega(leitor);
                     repositorioadega.getLista_adega().add(pa);
 
                     adegaview.listagem_adega(repositorioadega.getLista_adega());
-                } else if (selection == 3) {
+                } else if (selection_a == 3) {
                     adegaview.listagem_adega(repositorioadega.getLista_adega());
 
                     ProdutoAdega a_remove = adegaview.remover_cadastro_adega(leitor, repositorioadega.getLista_adega());
@@ -105,18 +105,40 @@ public class AppController {
                 }
                 open_adm();
                 break;
+
             case 2:
-                bebidaview.listagem_bebida(repositoriobebida.getLista_bebidas());
+                int selection_b = bebidaview.bebida_adm(leitor);
+
+                if (selection_b == 1) {
+                    bebidaview.listagem_bebida(repositoriobebida.getLista_bebidas());
+                } else if (selection_b == 2) {
+                    ProdutoBebida pb = bebidaview.cadastro_bebida(leitor);
+                    repositoriobebida.getLista_bebidas().add(pb);
+
+                    bebidaview.listagem_bebida(repositoriobebida.getLista_bebidas());
+
+                } else if (selection_b == 3) {
+                    bebidaview.listagem_bebida(repositoriobebida.getLista_bebidas());
+
+                    ProdutoBebida b_remove = bebidaview.remover_cadastro_bebida(leitor,
+                            repositoriobebida.getLista_bebidas());
+                    repositoriobebida.getLista_bebidas().remove(b_remove);
+
+                    bebidaview.listagem_bebida(repositoriobebida.getLista_bebidas());
+                }
                 open_adm();
                 break;
+
             case 3:
                 merceariaview.listagem_mercearia(repositoriomercearia.getLista_mercearia());
                 open_adm();
                 break;
+
             case 4:
                 padariaview.listagem_padaria(repositoriopadaria.getLista_padaria());
                 open_adm();
                 break;
+
             case 5:
                 Adm gestor1 = new Adm();
                 admview.alterar_senha(gestor1, leitor);
