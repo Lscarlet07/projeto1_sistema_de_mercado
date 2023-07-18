@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         AppController a1 = new AppController();
 
-        a1.inicializar();
+        a1.inicializar_repositorio();
+        a1.inicializar_menu();
     }
 }

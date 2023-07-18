@@ -57,8 +57,9 @@ public class MerceariaView {
             codigo = item.getCodigo_produto();
 
             System.out.printf(
-                    "Item %d\nNome: %s\nPeso: %s\nSetor: %s\nCorredor: %d\nValidade: %s\nValor unitário: %.2f",
+                    "Item %d\nNome: %s\nPeso: %s\nSetor: %s\nCorredor: %d\nValidade: %s\nValor unitário: %.2f\n",
                     codigo, nome, gramagem, setor, corredor, data, valor);
+            System.out.println("\n");
         }
     }
 }

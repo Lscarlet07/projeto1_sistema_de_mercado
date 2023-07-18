@@ -67,8 +67,9 @@ public class AdegaView {
             safra = item.getAno_safra();
 
             System.out.printf(
-                    "Item %d\nNome: %s\nTipo de bebida: %s\nOrigem: %s\nSafra: %d\nVolume: %s\nTeor de álcool: %.2f\nValidade: %s\nValor unitário: %.2f",
+                    "Item %d\nNome: %s\nTipo de bebida: %s\nOrigem: %s\nSafra: %d\nVolume: %s\nTeor de álcool: %.2f\nValidade: %s\nValor unitário: %.2f\n",
                     codigo, nome, tipo, origem, safra, ml, teor, data, valor);
+            System.out.println("\n");
         }
     }
 }

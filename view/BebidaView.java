@@ -72,8 +72,9 @@ public class BebidaView {
             codigo = item.getCodigo_produto();
 
             System.out.printf(
-                    "Item %d\nNome: %s\nTipo de bebida: %s\nVolume: %s\nRestrito: %s\nTeor de álcool: %.2f\nValidade: %s\nValor unitário: %.2f",
+                    "Item %d\nNome: %s\nTipo de bebida: %s\nVolume: %s\nRestrito: %s\nTeor de álcool: %.2f\nValidade: %s\nValor unitário: %.2f\n",
                     codigo, nome, tipo, ml, alcool, teor, data, valor);
+            System.out.println("\n");
         }
     }
 }

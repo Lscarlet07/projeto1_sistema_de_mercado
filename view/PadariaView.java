@@ -73,6 +73,7 @@ public class PadariaView {
             System.out.printf(
                     "Item %d\nNome: %s\nPeso em gramas: %s\nCategoria: %s\nEmbalado em: %s\nValidade: %s\nValor por kg: %.2f\nValor unitário: %.2f\nCódigo de pesagem: %d\n",
                     codigo, nome, peso, categoria, data_embalado, data, valor_kg, valor, codigo_pesagem);
+            System.out.println("\n");
         }
     }
 }

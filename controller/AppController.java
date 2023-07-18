@@ -1,7 +1,6 @@
 package controller;
 
 import java.util.Scanner;
-
 import model.Adm;
 import model.ProdutoAdega;
 import model.ProdutoBebida;
@@ -45,7 +44,7 @@ public class AppController {
         repositoriopadaria = new RepositorioPadaria();
     }
 
-    public void inicializar() {
+    public void inicializar_menu() {
         int op;
 
         Adm a1 = new Adm();
@@ -73,11 +72,11 @@ public class AppController {
                 if (admview.autenticar(a1, leitor)) {
                     open_adm();
                 } else {
-                    inicializar();
+                    inicializar_menu();
                 }
                 break;
             default:
-                inicializar();
+                inicializar_menu();
                 break;
         }
     }
@@ -105,8 +104,54 @@ public class AppController {
             case 5:
                 Adm gestor1 = new Adm();
                 admview.alterar_senha(gestor1, leitor);
-                inicializar();
+                inicializar_menu();
                 break;
         }
+    }
+
+    public void inicializar_repositorio() {
+        ProdutoMercearia m1 = new ProdutoMercearia("Doritos Original", 7894512, "20/05/2025", 9.49, "90g",
+                "Salgadinhos", 10);
+        ProdutoMercearia m2 = new ProdutoMercearia("Cebola em conserva Carrefour", 7893256, "07/2026", 12.50, "180g",
+                "Enlatados/Conservas", 7);
+        ProdutoMercearia m3 = new ProdutoMercearia("Leite Condensado Nestlé", 7896521, "04/2024", 9.20, "200g",
+                "Misturas para bolo/Derivados", 5);
+
+        repositoriomercearia.getLista_mercearia().add(m1);
+        repositoriomercearia.getLista_mercearia().add(m2);
+        repositoriomercearia.getLista_mercearia().add(m3);
+
+        ProdutoPadaria p1 = new ProdutoPadaria("Pão Francês", 205789, "02/05/2023", 7.25, 500, 14.50, "01/05/2023",
+                "Padaria", 2105);
+        ProdutoPadaria p2 = new ProdutoPadaria("Sonho de creme", 205752, "03/05/2023", 5.25, 120, 16.50, "01/05/2023",
+                "Confeitaria", 2107);
+        ProdutoPadaria p3 = new ProdutoPadaria("Peito de frango", 205719, "05/05/2023", 5.25, 50, 40.00, "01/05/2023",
+                "Fiamberia", 2125);
+
+        repositoriopadaria.getLista_padaria().add(p1);
+        repositoriopadaria.getLista_padaria().add(p2);
+        repositoriopadaria.getLista_padaria().add(p3);
+
+        ProdutoBebida b1 = new ProdutoBebida("Pepsi Black", 7894170, "09/2025", 9.50, "Refrigerante", "1000ml", false,
+                0);
+        ProdutoBebida b2 = new ProdutoBebida("Coca-Cola", 78941200, "05/2025", 11.50, "Refrigerante", "1000ml", false,
+                0);
+        ProdutoBebida b3 = new ProdutoBebida("Heineken", 7894150, "07/2025", 6.50, "Cerveja", "480ml", true,
+                5.0);
+
+        repositoriobebida.getLista_bebidas().add(b1);
+        repositoriobebida.getLista_bebidas().add(b2);
+        repositoriobebida.getLista_bebidas().add(b3);
+
+        ProdutoAdega a1 = new ProdutoAdega("Vinho Montes Claros", 7896032, "07/2027", 35.50, "Vinho tinto", "Brasil",
+                2017, 5.0, "980ml");
+        ProdutoAdega a2 = new ProdutoAdega("Salton Moscatel", 7896040, "07/2025", 29.00, "Espumante", "Brasil",
+                2020, 4.0, "750ml");
+        ProdutoAdega a3 = new ProdutoAdega("Portada", 7896022, "04/2027", 40.50, "Vinho rosé", "Portugal",
+                2021, 3.0, "980ml");
+
+        repositorioadega.getLista_adega().add(a1);
+        repositorioadega.getLista_adega().add(a2);
+        repositorioadega.getLista_adega().add(a3);
     }
 }
