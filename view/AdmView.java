@@ -5,7 +5,7 @@ import java.util.Scanner;
 import model.Adm;
 
 public class AdmView {
-    public boolean autenticar(Adm adminstrador, Scanner entrada) {
+    public boolean autenticar_adm(Adm adminstrador, Scanner entrada) {
         boolean autorizado = false;
 
         System.out.println("Solicitando acesso de administrador, digite sua credenial");

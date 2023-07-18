@@ -2,6 +2,7 @@ package controller;
 
 import java.util.Scanner;
 import model.Adm;
+import model.Encarregado;
 import model.ProdutoAdega;
 import model.ProdutoBebida;
 import model.ProdutoMercearia;
@@ -14,6 +15,7 @@ import view.AdegaView;
 import view.AdmView;
 import view.AppView;
 import view.BebidaView;
+import view.EncarregadoView;
 import view.MerceariaView;
 import view.PadariaView;
 
@@ -25,6 +27,7 @@ public class AppController {
     private AdegaView adegaview;
     private PadariaView padariaview;
     private AdmView admview;
+    private EncarregadoView encarregadoview;
     private RepositorioMercearia repositoriomercearia;
     private RepositorioBebida repositoriobebida;
     private RepositorioAdega repositorioadega;
@@ -38,6 +41,7 @@ public class AppController {
         adegaview = new AdegaView();
         padariaview = new PadariaView();
         admview = new AdmView();
+        encarregadoview = new EncarregadoView();
         repositoriomercearia = new RepositorioMercearia();
         repositoriobebida = new RepositorioBebida();
         repositorioadega = new RepositorioAdega();
@@ -46,30 +50,54 @@ public class AppController {
 
     public void inicializar_menu() {
         int op;
-
         Adm a1 = new Adm();
+        Encarregado supervisor = new Encarregado();
 
         op = appview.menu_inicial(leitor);
 
         switch (op) {
             case 1:
-                ProdutoMercearia pm = merceariaview.cadastro_mercearia(leitor);
-                repositoriomercearia.getLista_mercearia().add(pm);
+                if (encarregadoview.autenticar_acesso(supervisor, leitor, op)) {
+                    adegaview.listagem_adega(repositorioadega.getLista_adega());
+
+                    ProdutoAdega pa = adegaview.cadastro_adega(leitor);
+                    repositorioadega.getLista_adega().add(pa);
+                }
+
+                inicializar_menu();
                 break;
             case 2:
-                ProdutoBebida pb = bebidaview.cadastro_bebida(leitor);
-                repositoriobebida.getLista_bebidas().add(pb);
+                if (encarregadoview.autenticar_acesso(supervisor, leitor, op)) {
+                    bebidaview.listagem_bebida(repositoriobebida.getLista_bebidas());
+
+                    ProdutoBebida pb = bebidaview.cadastro_bebida(leitor);
+                    repositoriobebida.getLista_bebidas().add(pb);
+                }
+
+                inicializar_menu();
                 break;
             case 3:
-                ProdutoAdega pa = adegaview.cadastro_adega(leitor);
-                repositorioadega.getLista_adega().add(pa);
+                if (encarregadoview.autenticar_acesso(supervisor, leitor, op)) {
+                    merceariaview.listagem_mercearia(repositoriomercearia.getLista_mercearia());
+
+                    ProdutoMercearia pm = merceariaview.cadastro_mercearia(leitor);
+                    repositoriomercearia.getLista_mercearia().add(pm);
+                }
+
+                inicializar_menu();
                 break;
             case 4:
-                ProdutoPadaria pd = padariaview.cadastro_padaria(leitor);
-                repositoriopadaria.getLista_padaria().add(pd);
+                if (encarregadoview.autenticar_acesso(supervisor, leitor, op)) {
+                    padariaview.listagem_padaria(repositoriopadaria.getLista_padaria());
+
+                    ProdutoPadaria pd = padariaview.cadastro_padaria(leitor);
+                    repositoriopadaria.getLista_padaria().add(pd);
+                }
+
+                inicializar_menu();
                 break;
             case 5:
-                if (admview.autenticar(a1, leitor)) {
+                if (admview.autenticar_adm(a1, leitor)) {
                     open_adm();
                 } else {
                     inicializar_menu();
