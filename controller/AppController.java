@@ -130,7 +130,25 @@ public class AppController {
                 break;
 
             case 3:
-                merceariaview.listagem_mercearia(repositoriomercearia.getLista_mercearia());
+                int selection_m = merceariaview.mercearia_adm(leitor);
+
+                if (selection_m == 1) {
+                    merceariaview.listagem_mercearia(repositoriomercearia.getLista_mercearia());
+                } else if (selection_m == 2) {
+                    ProdutoMercearia pm = merceariaview.cadastro_mercearia(leitor);
+                    repositoriomercearia.getLista_mercearia().add(pm);
+
+                    merceariaview.listagem_mercearia(repositoriomercearia.getLista_mercearia());
+
+                } else if (selection_m == 3) {
+                    merceariaview.listagem_mercearia(repositoriomercearia.getLista_mercearia());
+
+                    ProdutoMercearia m_remove = merceariaview.remover_cadastro_mercearia(leitor,
+                            repositoriomercearia.getLista_mercearia());
+                    repositoriomercearia.getLista_mercearia().remove(m_remove);
+
+                    merceariaview.listagem_mercearia(repositoriomercearia.getLista_mercearia());
+                }
                 open_adm();
                 break;
 

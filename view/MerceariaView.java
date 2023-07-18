@@ -2,6 +2,8 @@ package view;
 
 import java.util.List;
 import java.util.Scanner;
+
+import model.ProdutoBebida;
 import model.ProdutoMercearia;
 
 public class MerceariaView {
@@ -45,7 +47,7 @@ public class MerceariaView {
         long codigo;
         int corredor;
 
-        System.out.println("Bebidas cadastradas:");
+        System.out.println("Produtos cadastrados:");
 
         for (ProdutoMercearia item : cadastros) {
             nome = item.getNome_produto();
@@ -61,5 +63,34 @@ public class MerceariaView {
                     codigo, nome, gramagem, setor, corredor, data, valor);
             System.out.println("\n");
         }
+    }
+
+    public int mercearia_adm(Scanner entrada) {
+        int op;
+
+        System.out.println("Setor da Mercearia, escolha a opção desejada");
+        System.out.println("1- Ver cadastros / 2 - Adicionar produto / 3 - Remover produto");
+        op = entrada.nextInt();
+
+        entrada.nextLine();
+
+        return op;
+    }
+
+    public ProdutoMercearia remover_cadastro_mercearia(Scanner entrada, List<ProdutoMercearia> cadastros) {
+        long codigo;
+        System.out.println("Insira o código do produto que gostaria de remover");
+        codigo = entrada.nextLong();
+
+        ProdutoMercearia pm = new ProdutoMercearia(null, 0, null, 0, null, null, 0);
+
+        for (ProdutoMercearia item : cadastros) {
+            if (codigo == item.getCodigo_produto()) {
+                pm = item;
+                System.out.println("Produto removido\n");
+                break;
+            }
+        }
+        return pm;
     }
 }

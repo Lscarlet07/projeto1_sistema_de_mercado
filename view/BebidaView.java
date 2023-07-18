@@ -2,8 +2,6 @@ package view;
 
 import java.util.List;
 import java.util.Scanner;
-
-import model.ProdutoAdega;
 import model.ProdutoBebida;
 
 public class BebidaView {
