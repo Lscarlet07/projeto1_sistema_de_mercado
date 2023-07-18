@@ -11,4 +11,12 @@ Outra função disponível é a alteração de senha.
 
 Para encerrar o programa, basta digitar 0 em qualquer menu principal.
 
+Credenciais de acesso:
+ID Supervisor da Adega - 15002023
+ID Supervisor das Bebidas - 16002023
+ID Supervisor da Mercearia - 12002023
+ID Supervisor da Padaria - 14002023
+Credencial ADM - xs4520
+Senha ADM - 3475023
+
 Todas as interações são feitas no terminal, sem GUI.
