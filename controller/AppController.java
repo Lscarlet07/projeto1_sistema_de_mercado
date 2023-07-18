@@ -153,7 +153,25 @@ public class AppController {
                 break;
 
             case 4:
-                padariaview.listagem_padaria(repositoriopadaria.getLista_padaria());
+                int selection_p = padariaview.padaria_adm(leitor);
+
+                if (selection_p == 1) {
+                    padariaview.listagem_padaria(repositoriopadaria.getLista_padaria());
+                } else if (selection_p == 2) {
+                    ProdutoPadaria pp = padariaview.cadastro_padaria(leitor);
+                    repositoriopadaria.getLista_padaria().add(pp);
+
+                    padariaview.listagem_padaria(repositoriopadaria.getLista_padaria());
+
+                } else if (selection_p == 3) {
+                    padariaview.listagem_padaria(repositoriopadaria.getLista_padaria());
+
+                    ProdutoPadaria p_remove = padariaview.remover_cadastro_padaria(leitor,
+                            repositoriopadaria.getLista_padaria());
+                    repositoriopadaria.getLista_padaria().remove(p_remove);
+
+                    padariaview.listagem_padaria(repositoriopadaria.getLista_padaria());
+                }
                 open_adm();
                 break;
 

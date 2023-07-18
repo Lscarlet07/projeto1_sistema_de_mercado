@@ -57,7 +57,7 @@ public class PadariaView {
         long codigo;
         int peso, codigo_pesagem;
 
-        System.out.println("Bebidas cadastradas:");
+        System.out.println("Produtos cadastrados:");
 
         for (ProdutoPadaria item : cadastros) {
             nome = item.getNome_produto();
@@ -75,5 +75,34 @@ public class PadariaView {
                     codigo, nome, peso, categoria, data_embalado, data, valor_kg, valor, codigo_pesagem);
             System.out.println("\n");
         }
+    }
+
+    public int padaria_adm(Scanner entrada) {
+        int op;
+
+        System.out.println("Setor da Padaria, escolha a opção desejada");
+        System.out.println("1- Ver cadastros / 2 - Adicionar produto / 3 - Remover produto");
+        op = entrada.nextInt();
+
+        entrada.nextLine();
+
+        return op;
+    }
+
+    public ProdutoPadaria remover_cadastro_padaria(Scanner entrada, List<ProdutoPadaria> cadastros) {
+        long codigo;
+        System.out.println("Insira o código do produto que gostaria de remover");
+        codigo = entrada.nextLong();
+
+        ProdutoPadaria pp = new ProdutoPadaria(null, 0, null, 0, 0, 0, null, null, 0);
+
+        for (ProdutoPadaria item : cadastros) {
+            if (codigo == item.getCodigo_produto()) {
+                pp = item;
+                System.out.println("Produto removido\n");
+                break;
+            }
+        }
+        return pp;
     }
 }
